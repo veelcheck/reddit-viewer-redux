@@ -1,0 +1,54 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadCategoryResults } from "./categoriesSlice";
+import { selectCategory } from "./categoriesSlice";
+
+const CategoriesResults = () => {
+  const dispatch = useDispatch();
+  const { articles, isLoading, hasError } = useSelector(
+    (state) => state.categoryResults
+  );
+
+  useEffect(() => {
+    dispatch(loadCategoryResults(selectCategory))
+  }, [dispatch])
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (hasError) {
+    return <div>Error fetching data.</div>;
+  }
+
+  return (
+    <div>
+      {articles.map((article) => (
+        <article
+          key={article.data.id}
+          className='flex flex-cols p-2 gap-2 items-center'>
+          {article.data.thumbnail !== 'self' &&
+          article.data.thumbnail !== 'default' &&
+          article.data.thumbnail.includes('redditmedia') ? (
+            <img
+              key={article.data.id}
+              className='rounded-xl'
+              src={article.data.thumbnail}
+              alt='thumbnail'
+            />
+          ) : (
+            <img
+              key={article.data.id}
+              className='rounded-xl'
+              src={'https://dummyimage.com/140x100/ff4400/fff&text=Reddit'}
+              alt='dummy'
+            />
+          )}
+          <h3>{article.data.title}</h3>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+export default CategoriesResults;

@@ -15,6 +15,9 @@ const Search = () => {
   const searchTerm = useSelector(selectSearchTerm);
 
   const handleSearch = () => {
+    if (searchTerm.length === 0) {
+      return
+    }
     dispatch(loadSearchResults(searchTerm));
     dispatch(clearSearchTerm())
   };
@@ -23,7 +26,7 @@ const Search = () => {
     dispatch(setSearchTerm(e.target.value));
   };
 
-  const handleKeyDown = (event) => {
+  const handleEnter = (event) => {
     if (event.key === 'Enter') {
       handleSearch();
     }
@@ -38,7 +41,7 @@ const Search = () => {
         variant='outlined'
         value={searchTerm}
         onChange={handleOnChange}
-        onKeyDown={handleKeyDown}
+        onKeyDown={handleEnter}
       />
       
         <Button
