@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadPopularArticles } from './popularArticlesSlice';
+import { loadSearchResults } from './searchResultsSlice';
+import { selectSearchTerm } from './searchResultsSlice';
 
-const PopularArticles = () => {
+const SearchedArticles = () => {
   const dispatch = useDispatch();
   const { articles, isLoading, hasError } = useSelector(
-    (state) => state.popularArticles
+    (state) => state.searchResults
   );
 
   useEffect(() => {
-    dispatch(loadPopularArticles());
+    dispatch(loadSearchResults(selectSearchTerm));
   }, [dispatch]);
 
   if (isLoading) {
@@ -50,4 +51,4 @@ const PopularArticles = () => {
   );
 };
 
-export default PopularArticles;
+export default SearchedArticles;

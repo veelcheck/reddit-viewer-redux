@@ -10,6 +10,7 @@ export const loadPopularArticles = createAsyncThunk(
       return data;
     } catch (error) {
       console.log('Error fetching data:', error);
+      throw error
     }
   }
 );
