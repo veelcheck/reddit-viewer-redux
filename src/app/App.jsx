@@ -6,26 +6,35 @@ import CategoriesButtons from '../features/categories/Categories';
 import CategoriesResults from '../features/categories/CategoriesResults';
 import { selectCategory } from '../features/categories/categoriesSlice';
 import { useSelector } from 'react-redux';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Root from '../components/Root';
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route
+      path='/'
+      element={<Root />}>
+      <Route index element={<PopularArticles />}/>
+      <Route
+        path='/search-results'
+        element={<SearchedArticles />}
+      />
+      <Route
+        path='/categories-results'
+        element={<CategoriesResults />}
+      />
+    </Route>
+  )
+);
 
 function App() {
-  const selectedCategory = useSelector(selectCategory);
-  const searchTerm = useSelector(selectSearchTerm);
-  console.log(selectedCategory);
-  console.log(searchTerm);
-
-  return (
-    <>
-      <Search />
-      <CategoriesButtons />
-      {selectedCategory ? (
-        <CategoriesResults />
-      ) : searchTerm ? (
-        <SearchedArticles />
-      ) : (
-        <PopularArticles />
-      )}
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

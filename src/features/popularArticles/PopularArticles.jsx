@@ -20,6 +20,12 @@ const PopularArticles = () => {
     return <div>Error fetching data.</div>;
   }
 
+  const getDate = (timestamp) => {
+    const date = new Date(timestamp * 1000); // Multiply by 1000 to convert from seconds to milliseconds
+    const formattedDate = date.toLocaleString(); // Format the date as a string
+    return formattedDate + ' UTC';
+  };
+
   return (
     <div>
       {articles.map((article) => (
@@ -43,7 +49,22 @@ const PopularArticles = () => {
               alt='dummy'
             />
           )}
+          <p>
+            {' '}
+            {getDate(article.data.created_utc)}
+            {article.data.subreddit_name_prefixed} {article.data.ups}{' '}
+            {article.data.downs} {article.data.num_comments}
+          </p>
           <h3>{article.data.title}</h3>
+          <div>{article.data.author}</div>
+          <a
+            href={`https://reddit.com${article.data.permalink}`}
+            target='_blank'
+            rel='noopener noreferrer'>
+            View on real reddit
+          </a>
+          <p>{ article.data.selftext}</p>
+          {/* <img src={`https://i.redd.it/wy4gzmigvdpc1.jpeg`}></img> */}
         </article>
       ))}
     </div>

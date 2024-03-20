@@ -7,14 +7,13 @@ import GamingIcon from '@mui/icons-material/SportsEsports';
 import BitcoinIcon from '@mui/icons-material/Paid';
 import categories from '../../data/listOfCategories.json';
 import {
-  clearCategory,
   loadCategoryResults,
   selectCategory,
   setCategory,
 } from './categoriesSlice';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
 import { clearSearchTerm } from '../search/searchResultsSlice';
+import { useNavigate } from 'react-router-dom';
 
 const iconComponents = [
   <PetsIcon />,
@@ -26,11 +25,13 @@ const iconComponents = [
 const CategoriesButtons = () => {
   const dispatch = useDispatch();
   const category = useSelector(selectCategory);
+  const navigate = useNavigate()
 
   const handleClick = (category) => {
     dispatch(clearSearchTerm());
     dispatch(setCategory(category));
     dispatch(loadCategoryResults(category));
+    navigate('/categories-results');
   };
 
   const handleEnter = (event, category) => {
@@ -39,11 +40,6 @@ const CategoriesButtons = () => {
     }
   };
 
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(clearCategory())
-  //   }
-  // },[dispatch])
 
   return (
     <div>

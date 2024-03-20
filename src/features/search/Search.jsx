@@ -11,10 +11,14 @@ import {
 } from './searchResultsSlice';
 import { useEffect } from 'react';
 import { clearCategory } from '../categories/categoriesSlice';
+import {
+  useNavigate 
+} from 'react-router-dom'
 
 const Search = () => {
   const dispatch = useDispatch();
   const searchTerm = useSelector(selectSearchTerm);
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     if (searchTerm.length === 0) {
@@ -22,6 +26,7 @@ const Search = () => {
     }
     dispatch(clearCategory())
     dispatch(loadSearchResults(searchTerm));
+    navigate('/search-results');
   };
 
   const handleOnChange = (e) => {
@@ -34,11 +39,7 @@ const Search = () => {
     }
   };
 
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(clearSearchTerm())
-  //   }
-  // }, [dispatch])
+
 
   return (
     <div className='pt-4'>
