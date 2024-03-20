@@ -4,12 +4,10 @@ import RedditIcon from '@mui/icons-material/Reddit';
 import TextField from '@mui/material/TextField';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  clearSearchTerm,
   selectSearchTerm,
   setSearchTerm,
   loadSearchResults,
 } from './searchResultsSlice';
-import { useEffect } from 'react';
 import { clearCategory } from '../categories/categoriesSlice';
 import {
   useNavigate 
@@ -38,8 +36,6 @@ const Search = () => {
       handleSearch();
     }
   };
-
-
 
   return (
     <div className='pt-4'>
