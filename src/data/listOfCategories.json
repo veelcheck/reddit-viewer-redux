@@ -1,21 +1,17 @@
 [
   {
-    "value": "animals",
-    "urlSnippet": "animals_and_pets"
+    "value": "animals"
   },
 
   {
-    "value": "fashion",
-    "urlSnippet": "fashion"
+    "value": "fashion"
   },
 
   {
-    "value": "gaming",
-    "urlSnippet": "gaming"
+    "value": "gaming"
   },
 
   {
-    "value": "bitcoin",
-    "urlSnippet": "bitcoin"
+    "value": "bitcoin"
   }
 ]

@@ -7,6 +7,6 @@ export default configureStore({
   reducer: {
     popularArticles: popularArticleReducer,
     searchResults: searchResultsReducer,
-    categoriesResults: categoriesResultsReducer,
+    categoryResults: categoriesResultsReducer,
   },
 });

@@ -7,8 +7,10 @@ import {
   clearSearchTerm,
   selectSearchTerm,
   setSearchTerm,
-  loadSearchResults
+  loadSearchResults,
 } from './searchResultsSlice';
+import { useEffect } from 'react';
+import { clearCategory } from '../categories/categoriesSlice';
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -16,10 +18,10 @@ const Search = () => {
 
   const handleSearch = () => {
     if (searchTerm.length === 0) {
-      return
+      return;
     }
+    dispatch(clearCategory())
     dispatch(loadSearchResults(searchTerm));
-    dispatch(clearSearchTerm())
   };
 
   const handleOnChange = (e) => {
@@ -32,6 +34,12 @@ const Search = () => {
     }
   };
 
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(clearSearchTerm())
+  //   }
+  // }, [dispatch])
+
   return (
     <div className='pt-4'>
       <label htmlFor='searchInput'>What topic are you looking for?</label>
@@ -43,14 +51,13 @@ const Search = () => {
         onChange={handleOnChange}
         onKeyDown={handleEnter}
       />
-      
-        <Button
-          variant='outlined'
-          startIcon={<RedditIcon />}
-          onClick={handleOnChange}>
-          SEARCH
-        </Button>
-      
+
+      <Button
+        variant='outlined'
+        startIcon={<RedditIcon />}
+        onClick={handleSearch}>
+        SEARCH
+      </Button>
     </div>
   );
 };
