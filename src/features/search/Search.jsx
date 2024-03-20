@@ -38,8 +38,8 @@ const Search = () => {
   };
 
   return (
-    <div className='pt-4'>
-      <label htmlFor='searchInput'>What topic are you looking for?</label>
+    <div className='pt-4 font-quicksand flex gap-2 justify-center py-4'>
+      <label htmlFor='searchInput'></label>
       <TextField
         id='searchInput'
         label='Search Reddit'

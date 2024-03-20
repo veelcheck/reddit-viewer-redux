@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
 import PetsIcon from '@mui/icons-material/Pets';
 import FashionIcon from '@mui/icons-material/Checkroom';
 import GamingIcon from '@mui/icons-material/SportsEsports';
@@ -42,23 +41,20 @@ const CategoriesButtons = () => {
 
 
   return (
-    <div>
-      <Stack
-        direction='row'
-        spacing={3}>
-        {categories.map((category, i) => {
-          return (
-            <Button
-              key={category.value}
-              startIcon={iconComponents[i]}
-              variant='contained'
-              onClick={() => handleClick(category.value)}
-              onKeyDown={(event) => handleEnter(event, category.value)}>
-              {category.value}
-            </Button>
-          );
-        })}
-      </Stack>
+    <div className='flex flex-wrap justify-center gap-2 py-4'>
+     
+      {categories.map((category, i) => {
+        return (
+          <Button
+            key={category.value}
+            startIcon={iconComponents[i]}
+            variant='contained'
+            onClick={() => handleClick(category.value)}
+            onKeyDown={(event) => handleEnter(event, category.value)}>
+            {category.value}
+          </Button>
+        );
+      })}
     </div>
   );
 };
