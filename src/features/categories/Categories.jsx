@@ -30,7 +30,7 @@ const CategoriesButtons = () => {
     dispatch(clearSearchTerm());
     dispatch(setCategory(category));
     dispatch(loadCategoryResults(category));
-    navigate('/categories-results');
+    navigate(`categories-results/${category}`);
   };
 
   const handleEnter = (event, category) => {

@@ -21,11 +21,11 @@ const router = createBrowserRouter(
         element={<PopularArticles />}
       />
       <Route
-        path='/search-results'
+        path='search-results/:searchTerm'
         element={<SearchedArticles />}
       />
       <Route
-        path='/categories-results'
+        path='categories-results/:category'
         element={<CategoriesResults />}
       />
     </Route>

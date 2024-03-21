@@ -24,7 +24,7 @@ const Search = () => {
     }
     dispatch(clearCategory())
     dispatch(loadSearchResults(searchTerm));
-    navigate('/search-results');
+    navigate(`/search-results/${searchTerm}`);
   };
 
   const handleOnChange = (e) => {
