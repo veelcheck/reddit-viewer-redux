@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loadCategoryResults } from "./categoriesSlice";
-import { selectCategory } from "./categoriesSlice";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadCategoryResults } from './categoriesSlice';
+import { selectCategory } from './categoriesSlice';
 
 const CategoriesResults = () => {
   const dispatch = useDispatch();
@@ -10,8 +10,8 @@ const CategoriesResults = () => {
   );
 
   useEffect(() => {
-    dispatch(loadCategoryResults(selectCategory))
-  }, [dispatch])
+    dispatch(loadCategoryResults(selectCategory));
+  }, [dispatch]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -49,6 +49,6 @@ const CategoriesResults = () => {
       ))}
     </div>
   );
-}
+};
 
 export default CategoriesResults;

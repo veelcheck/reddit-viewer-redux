@@ -10,7 +10,7 @@ import {
 } from './searchResultsSlice';
 import { clearCategory } from '../categories/categoriesSlice';
 import {
-  useNavigate 
+  useNavigate, useParams 
 } from 'react-router-dom'
 
 const Search = () => {
@@ -36,6 +36,8 @@ const Search = () => {
       handleSearch();
     }
   };
+
+  
 
   return (
     <div className='pt-4 font-quicksand flex gap-2 justify-center py-4'>

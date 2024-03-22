@@ -5,7 +5,9 @@ export const loadPopularArticles = createAsyncThunk(
   'popularArticles/loadArticles',
   async () => {
     try {
-      const response = await axios.get('https://www.reddit.com/r/home.json');
+      const response = await axios.get(
+        'https://www.reddit.com/r/home.json?limit=3'
+      );
       const data = response.data.data.children;
       console.log(data)
       return data;

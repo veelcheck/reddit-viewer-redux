@@ -11,6 +11,7 @@ const SearchedArticles = () => {
 
   useEffect(() => {
     dispatch(loadSearchResults(selectSearchTerm));
+    console.log(`The selected search term is ${selectSearchTerm}`);
   }, [dispatch]);
 
   if (isLoading) {
