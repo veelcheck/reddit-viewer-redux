@@ -1,9 +1,8 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import PetsIcon from '@mui/icons-material/Pets';
-import FashionIcon from '@mui/icons-material/Checkroom';
-import GamingIcon from '@mui/icons-material/SportsEsports';
-import BitcoinIcon from '@mui/icons-material/Paid';
+import HomeIcon from '@mui/icons-material/Bungalow';
+import BookIcon from '@mui/icons-material/AutoStories';
+import DiceIcon from '@mui/icons-material/Casino';
 import categories from '../../data/listOfCategories.json';
 import {
   loadCategoryResults,
@@ -15,10 +14,9 @@ import { clearSearchTerm } from '../search/searchResultsSlice';
 import { useNavigate } from 'react-router-dom';
 
 const iconComponents = [
-  <PetsIcon />,
-  <FashionIcon />,
-  <GamingIcon />,
-  <BitcoinIcon />,
+  <HomeIcon />,
+  <BookIcon />,
+  <DiceIcon />,
 ];
 
 const CategoriesButtons = () => {

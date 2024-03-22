@@ -44,6 +44,7 @@ const Search = () => {
       <label htmlFor='searchInput'></label>
       <TextField
         id='searchInput'
+        type='text'
         label='Search Reddit'
         variant='outlined'
         value={searchTerm}

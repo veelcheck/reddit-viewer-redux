@@ -29,14 +29,22 @@ const SubredditComponenet = () => {
           <div>{timeAgo(created)}</div>
           <div>{author}</div>
         </div>
-        <h3 className='font-bold text-xl'>{title}</h3>
+        <h2 className='font-bold text-xl'>{title}</h2>
         <p>{text}</p>
-        <div className='bg-black border border-red-300'>
-          <img
-            src={url}
-            className='max-w-64 sm:max-w-80 mx-auto'
-            alt='image related to the post'
-          />
+        <div className='bg-black border border-red-300 text-white rounded-xl'>
+          {url.includes('.png') || url.includes('.jpg') || url.includes('.jpeg')? (
+            <img
+              src={url}
+              className='max-w-64 sm:max-w-80 mx-auto'
+              alt='image related to the post'
+            />
+          ) : (
+            <p className='max-w-prose text-center py-4 mx-auto '>
+              Well, I didn't quite figure out how to render galleries or viedes yet. If you
+              need to see those, click the button below and go to{' '}
+              <span className='text-reddit-orange'>reddit.com</span>
+            </p>
+          )}
         </div>
 
         <div className='flex gap-4 justify-center'>

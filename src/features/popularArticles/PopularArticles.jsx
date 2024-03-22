@@ -26,6 +26,7 @@ const PopularArticles = () => {
     return <div>Error fetching data.</div>;
   }
 
+
   return (
     <section className='space-y-2 mt-4'>
       {articles.map((article) => (
@@ -56,9 +57,9 @@ const PopularArticles = () => {
             </div>
           )}
           <div className='space-y-2 overflow-hidden'>
-            <h3 className='font-bold text-xl sm:text-2xl text-center sm:text-left pt-4 sm:pt-0'>
+            <h2 className='font-bold text-xl sm:text-2xl text-center sm:text-left pt-4 sm:pt-0'>
               {article.data.title}
-            </h3>
+            </h2>
             <div className='flex flex-row gap-4 text-xs justify-center sm:justify-start'>
               <div className=''>{article.data.author}</div>
               <div className=''>{timeAgo(article.data.created_utc)}</div>
