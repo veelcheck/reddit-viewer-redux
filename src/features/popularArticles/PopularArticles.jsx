@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadPopularArticles } from './popularArticlesSlice';
-import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import payloadForSubreddit from '../../util/payloadForSubreddit';
+import { loadPopularArticles } from './popularArticlesSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
+import Button from '@mui/material/Button';
+import payloadForSubreddit from '../../util/payloadForSubreddit';
 import timeAgo from '../../util/timeAgo';
 
 const PopularArticles = () => {
@@ -25,8 +25,6 @@ const PopularArticles = () => {
   if (hasError) {
     return <div>Error fetching data.</div>;
   }
-
-  
 
   return (
     <section className='space-y-2 mt-4'>
@@ -54,7 +52,7 @@ const PopularArticles = () => {
                 className='rounded-xl mx-auto sm:self-center'
                 src={'https://dummyimage.com/140x100/ff4400/fff&text=reddit'}
                 alt='dummy'
-                />
+              />
             </div>
           )}
           <div className='space-y-2 overflow-hidden'>
