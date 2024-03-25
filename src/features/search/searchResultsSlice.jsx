@@ -8,7 +8,7 @@ export const loadSearchResults = createAsyncThunk(
       const response = await axios.get(
         `https://www.reddit.com/search.json?q=${searchTerm}`
       );
-      console.log(searchTerm)
+
       return response.data.data.children;
     } catch (error) {
       console.log('Error fetching data:', error);

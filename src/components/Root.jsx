@@ -8,7 +8,7 @@ function Root() {
   return (
     <div>
       <Header />
-      <section className='container mx-auto'>
+      <section className='container mx-auto '>
         <Search />
         <CategoriesButtons />
       </section>

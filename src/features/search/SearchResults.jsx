@@ -2,11 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loadSearchResults } from './searchResultsSlice';
-import { selectSearchTerm } from './searchResultsSlice';
+// import { selectSearchTerm } from './searchResultsSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import Button from '@mui/material/Button';
 import payloadForSubreddit from '../../util/payloadForSubreddit';
 import timeAgo from '../../util/timeAgo';
+import { useParams } from 'react-router-dom';
 
 const SearchedArticles = () => {
   const dispatch = useDispatch();
@@ -14,10 +15,10 @@ const SearchedArticles = () => {
   const { articles, isLoading, hasError } = useSelector(
     (state) => state.searchResults
   );
+  const { searchTermUrl } = useParams();
 
   useEffect(() => {
-    dispatch(loadSearchResults(selectSearchTerm));
-    console.log(`The selected search term is ${selectSearchTerm}`);
+    dispatch(loadSearchResults(searchTermUrl));
   }, [dispatch]);
 
   if (isLoading) {
@@ -25,7 +26,7 @@ const SearchedArticles = () => {
   }
 
   if (hasError) {
-    return <div>Error fetching data.</div>;
+    return <div>Error fetching data. Try again.</div>;
   }
 
   return (
@@ -38,8 +39,8 @@ const SearchedArticles = () => {
           article.data.thumbnail !== 'default' &&
           article.data.thumbnail.includes('redditmedia') ? (
             <div
-              className='sm:self-center  rounded-xl
-            bg-gradient-to-r from-reddit-orange via-black to-reddit-orange'>
+              className='sm:self-center rounded-xl
+            bg-black'>
               <img
                 key={article.data.id}
                 className='rounded-xl mx-auto'
@@ -70,7 +71,9 @@ const SearchedArticles = () => {
               <Button
                 size='small'
                 onClick={() => {
-                  navigate(`/subreddit/${article.data.id}`);
+                  navigate(
+                    `/subreddit/${encodeURIComponent(article.data.permalink)}`
+                  );
                   dispatch(
                     setSubreddit(
                       payloadForSubreddit(
@@ -78,7 +81,7 @@ const SearchedArticles = () => {
                         article.data.title,
                         article.data.author,
                         article.data.selftext,
-                        article.data.created_utc,
+                        article.data.created,
                         article.data.permalink,
                         article.data.ups,
                         article.data.downs,

@@ -1,23 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loadCategoryResults } from './categoriesSlice';
-import { selectCategory } from './categoriesSlice';
+// import { selectCategory } from './categoriesSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import payloadForSubreddit from '../../util/payloadForSubreddit';
 import timeAgo from '../../util/timeAgo';
 import Button from '@mui/material/Button';
-
+import { useParams } from 'react-router-dom';
 
 const CategoriesResults = () => {
   const dispatch = useDispatch();
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   const { articles, isLoading, hasError } = useSelector(
     (state) => state.categoryResults
   );
+  const { categoryUrl } = useParams();
 
   useEffect(() => {
-    dispatch(loadCategoryResults(selectCategory));
+    dispatch(loadCategoryResults(categoryUrl));
   }, [dispatch]);
 
   if (isLoading) {
@@ -38,8 +39,8 @@ const CategoriesResults = () => {
           article.data.thumbnail !== 'default' &&
           article.data.thumbnail.includes('redditmedia') ? (
             <div
-              className='sm:self-center  rounded-xl
-            bg-gradient-to-r from-reddit-orange via-black to-reddit-orange'>
+              className='sm:self-center rounded-xl
+            bg-black'>
               <img
                 key={article.data.id}
                 className='rounded-xl mx-auto'
@@ -58,9 +59,9 @@ const CategoriesResults = () => {
             </div>
           )}
           <div className='space-y-2 overflow-hidden'>
-            <h3 className='font-bold text-xl sm:text-2xl text-center sm:text-left pt-4 sm:pt-0'>
+            <h2 className='font-bold text-xl sm:text-2xl text-center sm:text-left pt-4 sm:pt-0'>
               {article.data.title}
-            </h3>
+            </h2>
             <div className='flex flex-row gap-4 text-xs justify-center sm:justify-start'>
               <div className=''>{article.data.author}</div>
               <div className=''>{timeAgo(article.data.created_utc)}</div>
@@ -70,7 +71,9 @@ const CategoriesResults = () => {
               <Button
                 size='small'
                 onClick={() => {
-                  navigate(`/subreddit/${article.data.id}`);
+                  navigate(
+                    `/subreddit/${encodeURIComponent(article.data.permalink)}`
+                  );
                   dispatch(
                     setSubreddit(
                       payloadForSubreddit(
@@ -78,7 +81,7 @@ const CategoriesResults = () => {
                         article.data.title,
                         article.data.author,
                         article.data.selftext,
-                        article.data.created_utc,
+                        article.data.created,
                         article.data.permalink,
                         article.data.ups,
                         article.data.downs,

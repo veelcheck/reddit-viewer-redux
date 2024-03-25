@@ -1,7 +1,7 @@
 import PopularArticles from '../features/popularArticles/PopularArticles';
 import SearchedArticles from '../features/search/SearchResults';
 import CategoriesResults from '../features/categories/CategoriesResults';
-import SubredditComponenet from '../features/subreddit/SubredditComponenet';
+import SubredditComponent from '../features/subreddit/SubredditComponent';
 import Root from '../components/Root';
 import SurprisePage from '../components/SurprisePage';
 import {
@@ -31,7 +31,7 @@ const router = createBrowserRouter(
       />
       <Route
         path='subreddit/:idUrl'
-        element={<SubredditComponenet />}
+        element={<SubredditComponent />}
       />
       <Route
         path='surpise-page'

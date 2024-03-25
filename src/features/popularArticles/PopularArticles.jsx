@@ -37,8 +37,8 @@ const PopularArticles = () => {
           article.data.thumbnail !== 'default' &&
           article.data.thumbnail.includes('redditmedia') ? (
             <div
-              className='sm:self-center  rounded-xl
-            bg-gradient-to-r from-reddit-orange via-black to-reddit-orange'>
+              className='sm:self-center rounded-xl
+            bg-black'>
               <img
                 key={article.data.id}
                 className='rounded-xl mx-auto'
@@ -69,7 +69,9 @@ const PopularArticles = () => {
               <Button
                 size='small'
                 onClick={() => {
-                  navigate(`subreddit/${article.data.id}`);
+                  navigate(
+                    `subreddit/${encodeURIComponent(article.data.permalink)}`
+                  );
                   dispatch(
                     setSubreddit(
                       payloadForSubreddit(
@@ -77,7 +79,7 @@ const PopularArticles = () => {
                         article.data.title,
                         article.data.author,
                         article.data.selftext,
-                        article.data.created_utc,
+                        article.data.created,
                         article.data.permalink,
                         article.data.ups,
                         article.data.downs,
