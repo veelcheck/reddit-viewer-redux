@@ -9,7 +9,6 @@ export const loadComments = createAsyncThunk(
 
       const data = response.data[1].data.children;
       console.log(data);
-      console.log(data[0].data.replies.data.children)
       return data;
     } catch (error) {
       console.log('Error fetching data:', error);
