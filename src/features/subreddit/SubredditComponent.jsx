@@ -1,11 +1,14 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import timeAgo from '../../util/timeAgo';
 import UpIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import DownIcon from '@mui/icons-material/ThumbDownAltOutlined';
 import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import Button from '@mui/material/Button';  
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+
 
 import CommentsComponent from '../comments/CommentsComponent';
 
@@ -30,11 +33,11 @@ const SubredditComponent = () => {
         </div>
         <h2 className='font-bold text-xl'>{subredditData.title}</h2>
         <p>{subredditData.text}</p>
-        <div className='bg-black border border-red-300 text-white rounded-xl'>
+        <div className='bg-black border text-white rounded-xl'>
           {subredditData.url.includes('.png') ||
           subredditData.url.includes('.jpg') ||
           subredditData.url.includes('.jpeg') ? (
-            <img
+            <LazyLoadImage
               src={subredditData.url}
               className='max-w-64 sm:max-w-80 mx-auto'
               alt='image related to the post'

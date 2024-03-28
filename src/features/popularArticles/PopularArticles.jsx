@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import { loadPopularArticles } from './popularArticlesSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import Button from '@mui/material/Button';
@@ -39,7 +41,7 @@ const PopularArticles = () => {
             <div
               className='sm:self-center rounded-xl
             bg-black'>
-              <img
+              <LazyLoadImage
                 key={article.data.id}
                 className='rounded-xl mx-auto'
                 src={article.data.thumbnail}
@@ -48,7 +50,7 @@ const PopularArticles = () => {
             </div>
           ) : (
             <div className='sm:self-center bg-reddit-orange rounded-xl'>
-              <img
+              <LazyLoadImage
                 key={article.data.id}
                 className='rounded-xl mx-auto sm:self-center'
                 src={'https://dummyimage.com/140x100/ff4400/fff&text=reddit'}

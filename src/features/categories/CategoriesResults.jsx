@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import { loadCategoryResults } from './categoriesSlice';
-// import { selectCategory } from './categoriesSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import payloadForSubreddit from '../../util/payloadForSubreddit';
 import timeAgo from '../../util/timeAgo';
@@ -41,7 +42,7 @@ const CategoriesResults = () => {
             <div
               className='sm:self-center rounded-xl
             bg-black'>
-              <img
+              <LazyLoadImage
                 key={article.data.id}
                 className='rounded-xl mx-auto'
                 src={article.data.thumbnail}
@@ -50,7 +51,7 @@ const CategoriesResults = () => {
             </div>
           ) : (
             <div className='sm:self-center bg-reddit-orange rounded-xl'>
-              <img
+              <LazyLoadImage
                 key={article.data.id}
                 className='rounded-xl mx-auto sm:self-center'
                 src={'https://dummyimage.com/140x100/ff4400/fff&text=reddit'}

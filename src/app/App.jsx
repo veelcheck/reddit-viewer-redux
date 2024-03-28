@@ -1,9 +1,5 @@
-// import PopularArticles from '../features/popularArticles/PopularArticles';
-// import SearchedArticles from '../features/search/SearchResults';
-// import CategoriesResults from '../features/categories/CategoriesResults';
-// import SubredditComponent from '../features/subreddit/SubredditComponent';
 import Root from '../components/Root';
-// import SurprisePage from '../components/SurprisePage';
+
 import {
   Route,
   RouterProvider,
