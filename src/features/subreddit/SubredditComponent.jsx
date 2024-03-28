@@ -44,8 +44,8 @@ const SubredditComponent = () => {
             />
           ) : (
             <p className='max-w-prose text-center py-4 mx-auto container'>
-              Well, I didn't quite figure out how to render galleries or viedes
-              yet. If you need to see those, click the button below and go to{' '}
+              Well, I didn't quite figure out how to render externally sourced materials, galleries or videos
+              yet. I might one day. If you want to see those, click the button below and go to{' '}
               <span className='text-reddit-orange'>reddit.com</span>
             </p>
           )}

@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+import Loading from '../../components/Loading';
 import { loadSearchResults } from './searchResultsSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import Button from '@mui/material/Button';
@@ -21,11 +23,11 @@ const SearchedArticles = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (hasError) {
-    return <div>Error fetching data. Try again.</div>;
+     return <h2>Error fetching data.</h2>;
   }
 
   return (

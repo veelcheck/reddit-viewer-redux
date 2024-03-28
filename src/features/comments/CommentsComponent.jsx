@@ -1,6 +1,8 @@
 import { loadComments } from './commentsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import Loading from '../../components/Loading';
+
 import timeAgo from '../../util/timeAgo';
 import UpIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import DownIcon from '@mui/icons-material/ThumbDownAltOutlined';
@@ -25,7 +27,7 @@ const CommentsComponent = ({ idUrl }) => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (hasError) {

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
+import Loading from '../../components/Loading';
 import { loadCategoryResults } from './categoriesSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import payloadForSubreddit from '../../util/payloadForSubreddit';
@@ -23,11 +24,11 @@ const CategoriesResults = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (hasError) {
-    return <div>Error fetching data.</div>;
+    return <h2>Error fetching data.</h2>;
   }
 
   return (

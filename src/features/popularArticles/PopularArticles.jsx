@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
+import Loading from '../../components/Loading';
 import { loadPopularArticles } from './popularArticlesSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import Button from '@mui/material/Button';
@@ -21,11 +22,11 @@ const PopularArticles = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />
   }
 
   if (hasError) {
-    return <div>Error fetching data.</div>;
+     return <h2>Error fetching data.</h2>;
   }
 
 
