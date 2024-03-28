@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import { Outlet } from 'react-router-dom';
 import Search from '../features/search/Search';
 import CategoriesButtons from '../features/categories/Categories';
@@ -14,7 +14,9 @@ function Root() {
       </section>
 
       <main className='container mx-auto'>
-        <Outlet />
+        <Suspense fallback={<p>Loading...</p>}>
+          <Outlet />
+        </Suspense>
       </main>
     </div>
   );
