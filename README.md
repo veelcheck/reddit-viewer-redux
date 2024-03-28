@@ -1,6 +1,7 @@
 # Reddit Viewer App
 
-This project is a Reddit viewer application built in Vite, using React and Redux Toolkit. It allows users to browse Reddit content, search for specific terms, filter data based on predefined categories, and view detailed information about selected items including the comments.
+This project is a Reddit viewer application built in Vite, using React and Redux Toolkit. It allows users to browse Reddit content, search for specific terms, filter data based on predefined categories, and view detailed information about selected items including the comments.  
+The app has been deployed with Netlify. [TRY IT HERE](https://reddit-viewer-redux.netlify.app/)
 
 ## Features
 
