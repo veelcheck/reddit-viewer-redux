@@ -6,7 +6,7 @@ import UpIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import DownIcon from '@mui/icons-material/ThumbDownAltOutlined';
 import PlusIcon from '@mui/icons-material/AddCircleOutline';
 
-const CommentsComponenet = ({ idUrl }) => {
+const CommentsComponent = ({ idUrl }) => {
   const dispatch = useDispatch();
   const { comments, isLoading, hasError } = useSelector(
     (state) => state.comments
@@ -36,7 +36,7 @@ const CommentsComponenet = ({ idUrl }) => {
     'flex gap-2 font-quicksand text-gray-800 bg-slate-200 py-1 px-2 rounded-xl';
 
   return (
-    <section className='max-w-prose mx-auto'>
+    <section className='max-w-prose mx-auto break-words'>
       <ul className='space-y-4'>
         {comments.map((comment) => (
           <li key={comment.data.id}>
@@ -118,4 +118,4 @@ const CommentsComponenet = ({ idUrl }) => {
   );
 };
 
-export default CommentsComponenet;
+export default CommentsComponent;

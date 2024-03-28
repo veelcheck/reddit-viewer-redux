@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
-import CommentsComponenet from '../comments/CommentsComponent';
+import CommentsComponent from '../comments/CommentsComponent';
 
 const SubredditComponent = () => {
 
@@ -23,7 +23,7 @@ const SubredditComponent = () => {
   
   return (
     <>
-      <article className='space-y-2'>
+      <article className='space-y-2 break-words'>
         <div className='text-xs flex gap-4 font-quicksand text-gray-800'>
           <div>{timeAgo(subredditData.created)}</div>
           <div>{subredditData.author}</div>
@@ -72,7 +72,7 @@ const SubredditComponent = () => {
           </Button>
         </div>
       </article>
-      <CommentsComponenet idUrl={idUrl} />
+      <CommentsComponent idUrl={idUrl} />
     </>
   );
 };
