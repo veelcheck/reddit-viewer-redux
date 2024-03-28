@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import HomeIcon from '@mui/icons-material/Bungalow';
 import BookIcon from '@mui/icons-material/AutoStories';
 import DiceIcon from '@mui/icons-material/Casino';
+import BackIcon from '@mui/icons-material/KeyboardBackspace';
 import categories from '../../data/listOfCategories.json';
 import {
   loadCategoryResults,
@@ -31,16 +32,14 @@ const CategoriesButtons = () => {
     navigate(`categories-results/${category}`);
   };
 
-  const handleEnter = (event, category) => {
-    if (event.key === 'Enter') {
-      handleClick(category);
-    }
-  };
-
-
   return (
     <div className='flex flex-wrap justify-center gap-2 py-4'>
-     
+      <Button
+        startIcon={<BackIcon />}
+        variant='outlined'
+        onClick={() => navigate(-1)}>
+        Back
+      </Button>
       {categories.map((category, i) => {
         return (
           <Button
@@ -48,7 +47,7 @@ const CategoriesButtons = () => {
             startIcon={iconComponents[i]}
             variant='contained'
             onClick={() => handleClick(category.value)}
-            onKeyDown={(event) => handleEnter(event, category.value)}>
+          >
             {category.value}
           </Button>
         );
