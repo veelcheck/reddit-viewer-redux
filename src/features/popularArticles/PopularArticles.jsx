@@ -31,7 +31,7 @@ const PopularArticles = () => {
   }
 
   return (
-    <section className='space-y-2 mt-4 break-words'>
+    <section className='space-y-2 mt-4'>
       {articles.map((article) => (
         <article
           key={article.data.id}

@@ -26,7 +26,7 @@ const SubredditComponent = () => {
   
   return (
     <>
-      <article className='space-y-2 break-words'>
+      <article className='space-y-2'>
         <div className='text-xs flex gap-4 font-quicksand text-gray-800'>
           <div>{timeAgo(subredditData.created)}</div>
           <div>{subredditData.author}</div>

@@ -14,7 +14,7 @@ function Root() {
         <CategoriesButtons />
       </section>
 
-      <main className='container mx-auto'>
+      <main className='container mx-auto break-words'>
         <Suspense fallback={<Loading />}>
           <Outlet />
         </Suspense>
