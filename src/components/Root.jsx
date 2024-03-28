@@ -1,5 +1,6 @@
 import React, {Suspense} from 'react';
 import { Outlet } from 'react-router-dom';
+import Loading from './Loading';
 import Search from '../features/search/Search';
 import CategoriesButtons from '../features/categories/Categories';
 import Header from './Header';
@@ -14,7 +15,7 @@ function Root() {
       </section>
 
       <main className='container mx-auto'>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Loading />}>
           <Outlet />
         </Suspense>
       </main>

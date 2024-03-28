@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 import { loadSearchResults } from './searchResultsSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import Button from '@mui/material/Button';
@@ -27,7 +28,7 @@ const SearchedArticles = () => {
   }
 
   if (hasError) {
-     return <h2>Error fetching data.</h2>;
+     return <Error />;
   }
 
   return (

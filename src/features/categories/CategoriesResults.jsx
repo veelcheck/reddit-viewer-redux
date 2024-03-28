@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 import { loadCategoryResults } from './categoriesSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import payloadForSubreddit from '../../util/payloadForSubreddit';
@@ -28,7 +29,7 @@ const CategoriesResults = () => {
   }
 
   if (hasError) {
-    return <h2>Error fetching data.</h2>;
+    return <Error />;
   }
 
   return (
