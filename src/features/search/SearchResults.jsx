@@ -32,7 +32,7 @@ const SearchedArticles = () => {
   }
 
   return (
-    <section className='space-y-2 mt-4'>
+    <section className='space-y-2 mt-4 max-w-4xl mx-auto'>
       {articles.map((article) => (
         <article
           key={article.data.id}

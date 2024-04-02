@@ -1,8 +1,14 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import { clearSearchTerm } from '../features/search/searchResultsSlice';
+import { useDispatch } from 'react-redux';
 
 function SurprisePage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  dispatch(clearSearchTerm());
+
   return (
     <section
       className='max-w-prose mx-auto font-quicksand'

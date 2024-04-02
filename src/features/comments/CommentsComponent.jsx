@@ -39,7 +39,7 @@ const CommentsComponent = ({ idUrl }) => {
     'flex gap-2 font-quicksand text-gray-800 bg-slate-200 py-1 px-2 rounded-xl';
 
   return (
-    <section className='max-w-prose mx-auto'>
+    <section className='max-w-prose mx-auto text-md'>
       <ul className='space-y-4'>
         {comments.map((comment) => (
           <li key={comment.data.id}>
@@ -91,7 +91,7 @@ const CommentsComponent = ({ idUrl }) => {
                       <div>{reply.data.author}</div>
                       <div>{timeAgo(reply.data.created)}</div>
                     </div>
-                    <div className='bg-orange-100 px-2 rounded-xl'>
+                    <div className='border-l-8 pl-2'>
                       {reply.data.body}
                     </div>
                     <div className='flex gap-4 justify-start pt-2'>

@@ -22,8 +22,6 @@ export const loadSubreddit = createAsyncThunk(
         numComments: data.num_comments,
         url: data.url,
       };
-
-      console.log(`This is payload ${payload}`);
       return payload;
     } catch (error) {
       console.log('Error fetching data:', error);

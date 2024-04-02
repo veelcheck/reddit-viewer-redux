@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import timeAgo from '../../util/timeAgo';
@@ -15,13 +15,17 @@ const SubredditComponent = () => {
   const initialSubredditData = useSelector(
     (state) => state.subreddit.subreddit
   );
-  
+
   const [subredditData, setSubredditData] = useState(
     JSON.parse(localStorage.getItem('local')) || initialSubredditData
   );
 
   localStorage.setItem('local', JSON.stringify(subredditData));
-  console.log(JSON.parse(localStorage.getItem('local')));
+
+  useEffect(() => {
+    // Scroll to top when component first mounts
+    window.scrollTo(0, 0);
+  }, []);
 
   const { idUrl } = useParams();
 
@@ -30,7 +34,7 @@ const SubredditComponent = () => {
 
   return (
     <>
-      <article className='space-y-2'>
+      <article className='space-y-2 max-w-3xl mx-auto'>
         <div className='text-xs flex gap-4 font-quicksand text-gray-800'>
           <div>{timeAgo(subredditData.created)}</div>
           <div>{subredditData.author}</div>
@@ -48,10 +52,10 @@ const SubredditComponent = () => {
             />
           ) : (
             <p className='max-w-prose text-center py-4 mx-auto container'>
-              Well, I didn't quite figure out how to render externally sourced
-              materials, galleries or videos yet. I might one day. If you want
-              to see those, click the button below and go to{' '}
-              <span className='text-reddit-orange'>reddit.com</span>
+              The aim of this project was to work with Redux Toolkit. Therefore,
+              there is no implementation for displaying videos, galleries, or
+              externally sourced materials. This placeholder is for single
+              jpeg/jpg/png files exclusively.
             </p>
           )}
         </div>

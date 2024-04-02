@@ -8,7 +8,7 @@ export const loadComments = createAsyncThunk(
       const response = await axios.get(`https://www.reddit.com${idUrl}.json`);
 
       const data = response.data[1].data.children;
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       console.log('Error fetching data:', error);
