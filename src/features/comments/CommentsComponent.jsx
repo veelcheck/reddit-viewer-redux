@@ -39,7 +39,7 @@ const CommentsComponent = ({ idUrl }) => {
     'flex gap-2 font-quicksand text-gray-800 bg-slate-200 py-1 px-2 rounded-xl';
 
   return (
-    <section className='max-w-prose mx-auto text-md'>
+    <section className='max-w-prose mx-auto text-md pb-8'>
       <ul className='space-y-4'>
         {comments.map((comment) => (
           <li key={comment.data.id}>
