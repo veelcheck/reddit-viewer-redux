@@ -91,9 +91,7 @@ const CommentsComponent = ({ idUrl }) => {
                       <div>{reply.data.author}</div>
                       <div>{timeAgo(reply.data.created)}</div>
                     </div>
-                    <div className='border-l-8 pl-2'>
-                      {reply.data.body}
-                    </div>
+                    <div className='border-l-8 pl-2'>{reply.data.body}</div>
                     <div className='flex gap-4 justify-start pt-2'>
                       <div className={customStyleLikesAndComments}>
                         {reply.data.ups}

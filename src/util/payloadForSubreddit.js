@@ -22,7 +22,6 @@ const payloadForSubreddit = (
     numComments,
     url,
   };
-  console.log(payload);
   return payload;
 };
 

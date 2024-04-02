@@ -4,7 +4,6 @@ import HomeIcon from '@mui/icons-material/Bungalow';
 import BookIcon from '@mui/icons-material/AutoStories';
 import DiceIcon from '@mui/icons-material/Casino';
 import BackIcon from '@mui/icons-material/KeyboardBackspace';
-import categories from '../../data/listOfCategories.json';
 import {
   loadCategoryResults,
   selectCategory,
@@ -14,10 +13,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearSearchTerm } from '../search/searchResultsSlice';
 import { useNavigate } from 'react-router-dom';
 
-const iconComponents = [
-  <HomeIcon />,
-  <BookIcon />,
-  <DiceIcon />,
+
+const buttonData = [
+  { name: 'Home', icon: <HomeIcon /> },
+  { name: 'Popular', icon: <BookIcon /> },
+  { name: 'Boardgames', icon: <DiceIcon /> },
 ];
 
 const CategoriesButtons = () => {
@@ -40,15 +40,15 @@ const CategoriesButtons = () => {
         onClick={() => navigate(-1)}>
         Back
       </Button>
-      {categories.map((category, i) => {
+      {buttonData.map((button, i) => {
         return (
           <Button
-            key={category.value}
-            startIcon={iconComponents[i]}
+            key={button.name}
+            startIcon={button.icon}
             variant='contained'
-            onClick={() => handleClick(category.value)}
+            onClick={() => handleClick(button.name)}
           >
-            {category.value}
+            {button.name}
           </Button>
         );
       })}

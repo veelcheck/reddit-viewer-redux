@@ -8,7 +8,6 @@ export const loadCategoryResults = createAsyncThunk(
       const response = await axios.get(
         `https://www.reddit.com/r/${category}.json`
       );
-      // console.log(category)
       return response.data.data.children;
     } catch (error) {
       console.log('Error fetching data:', error);
