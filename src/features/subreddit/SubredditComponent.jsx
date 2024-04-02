@@ -7,23 +7,27 @@ import timeAgo from '../../util/timeAgo';
 import UpIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import DownIcon from '@mui/icons-material/ThumbDownAltOutlined';
 import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import Button from '@mui/material/Button';  
-
+import Button from '@mui/material/Button';
 
 import CommentsComponent from '../comments/CommentsComponent';
 
 const SubredditComponent = () => {
-
   const initialSubredditData = useSelector(
     (state) => state.subreddit.subreddit
   );
-  const [subredditData, setSubredditData] = useState(initialSubredditData);
+  
+  const [subredditData, setSubredditData] = useState(
+    JSON.parse(localStorage.getItem('local')) || initialSubredditData
+  );
+
+  localStorage.setItem('local', JSON.stringify(subredditData));
+  console.log(JSON.parse(localStorage.getItem('local')));
 
   const { idUrl } = useParams();
 
   const customStyleLikesAndComments =
     'flex gap-2 font-quicksand text-gray-800 bg-slate-200 p-2 rounded-xl';
-  
+
   return (
     <>
       <article className='space-y-2'>
@@ -44,8 +48,9 @@ const SubredditComponent = () => {
             />
           ) : (
             <p className='max-w-prose text-center py-4 mx-auto container'>
-              Well, I didn't quite figure out how to render externally sourced materials, galleries or videos
-              yet. I might one day. If you want to see those, click the button below and go to{' '}
+              Well, I didn't quite figure out how to render externally sourced
+              materials, galleries or videos yet. I might one day. If you want
+              to see those, click the button below and go to{' '}
               <span className='text-reddit-orange'>reddit.com</span>
             </p>
           )}
