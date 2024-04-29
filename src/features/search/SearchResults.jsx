@@ -9,7 +9,7 @@ import NoResultsComponent from '../../components/NoResults';
 import { loadSearchResults } from './searchResultsSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import Button from '@mui/material/Button';
-import payloadForSubreddit from '../../util/payloadForSubreddit';
+import subredditPayload from '../../util/subredditPayload';
 import getTimespamp from '../../util/timestamp';
 
 const SearchedArticles = () => {
@@ -29,7 +29,7 @@ const SearchedArticles = () => {
   }
 
   if (hasError) {
-     return <ErrorComponent />;
+    return <ErrorComponent />;
   }
 
   if (articles.length === 0) {
@@ -83,7 +83,7 @@ const SearchedArticles = () => {
                   );
                   dispatch(
                     setSubreddit(
-                      payloadForSubreddit(
+                      subredditPayload(
                         article.data.id,
                         article.data.title,
                         article.data.author,

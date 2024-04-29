@@ -8,7 +8,7 @@ import ErrorComponent from '../../components/Error';
 import { loadPopularArticles } from './popularArticlesSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import Button from '@mui/material/Button';
-import payloadForSubreddit from '../../util/payloadForSubreddit';
+import subredditPayload from '../../util/subredditPayload';
 import getTimespamp from '../../util/timestamp';
 
 const PopularArticles = () => {
@@ -77,7 +77,7 @@ const PopularArticles = () => {
                   );
                   dispatch(
                     setSubreddit(
-                      payloadForSubreddit(
+                      subredditPayload(
                         article.data.id,
                         article.data.title,
                         article.data.author,

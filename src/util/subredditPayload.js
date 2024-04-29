@@ -1,4 +1,4 @@
-const payloadForSubreddit = (
+const subredditPayload = (
   id,
   title,
   author,
@@ -22,7 +22,8 @@ const payloadForSubreddit = (
     numComments,
     url,
   };
+  console.log(payload);
   return payload;
 };
 
-export default payloadForSubreddit;
+export default subredditPayload;

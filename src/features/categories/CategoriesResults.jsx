@@ -7,7 +7,7 @@ import IsLoadingComponent from '../../components/Loading';
 import ErrorComponent from '../../components/Error';
 import { loadCategoryResults } from './categoriesSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
-import payloadForSubreddit from '../../util/payloadForSubreddit';
+import subredditPayload from '../../util/subredditPayload';
 import getTimespamp from '../../util/timestamp';
 import Button from '@mui/material/Button';
 import { useParams } from 'react-router-dom';
@@ -79,7 +79,7 @@ const CategoriesResults = () => {
                   );
                   dispatch(
                     setSubreddit(
-                      payloadForSubreddit(
+                      subredditPayload(
                         article.data.id,
                         article.data.title,
                         article.data.author,
