@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-import Loading from '../../components/Loading';
-import Error from '../../components/Error';
+import IsLoadingComponent from '../../components/Loading';
+import ErrorComponent from '../../components/Error';
 import { loadPopularArticles } from './popularArticlesSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import Button from '@mui/material/Button';
@@ -23,11 +23,11 @@ const PopularArticles = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <Loading />;
+    return <IsLoadingComponent />;
   }
 
   if (hasError) {
-    return <Error />;
+    return <ErrorComponent />;
   }
 
   return (

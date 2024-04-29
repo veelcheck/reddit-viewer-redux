@@ -1,8 +1,8 @@
 import { loadComments } from './commentsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import Loading from '../../components/Loading';
-import Error from '../../components/Error';
+import IsLoadingComponent from '../../components/Loading';
+import ErrorComponent from '../../components/Error';
 
 import getTimespamp from '../../util/timestamp';
 import UpIcon from '@mui/icons-material/ThumbUpAltOutlined';
@@ -28,11 +28,11 @@ const CommentsComponent = ({ idUrl }) => {
   };
 
   if (isLoading) {
-    return <Loading />;
+    return <IsLoadingComponent />;
   }
 
   if (hasError) {
-    return <Error />;
+    return <ErrorComponent />;
   }
 
   const customStyleLikesAndComments =
