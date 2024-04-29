@@ -5,6 +5,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import IsLoadingComponent from '../../components/Loading';
 import ErrorComponent from '../../components/Error';
+import NoResultsComponent from '../../components/NoResults';
 import { loadSearchResults } from './searchResultsSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import Button from '@mui/material/Button';
@@ -29,6 +30,10 @@ const SearchedArticles = () => {
 
   if (hasError) {
      return <ErrorComponent />;
+  }
+
+  if (articles.length === 0) {
+    return <NoResultsComponent />;
   }
 
   return (
