@@ -17,7 +17,7 @@ const CommentsComponent = ({ idUrl }) => {
 
   useEffect(() => {
     dispatch(loadComments(idUrl));
-  }, [dispatch]);
+  }, []);
 
   const [showReplies, setShowReplies] = useState({});
   const toggleShowReplies = (commentId) => {

@@ -6,12 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectSearchTerm,
   setSearchTerm,
-  loadSearchResults,
+  // loadSearchResults,
 } from './searchResultsSlice';
 import { clearCategory } from '../categories/categoriesSlice';
-import {
-  useNavigate, useParams 
-} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -23,7 +21,7 @@ const Search = () => {
       return;
     }
     dispatch(clearCategory())
-    dispatch(loadSearchResults(searchTerm));
+    // dispatch(loadSearchResults(searchTerm));
     navigate(`/search-results/${searchTerm}`);
   };
 

@@ -22,7 +22,7 @@ const CategoriesResults = () => {
 
   useEffect(() => {
     dispatch(loadCategoryResults(categoryUrl));
-  }, [dispatch]);
+  }, [categoryUrl]);
 
   if (isLoading) {
     return <IsLoadingComponent />;

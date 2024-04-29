@@ -20,7 +20,7 @@ const PopularArticles = () => {
 
   useEffect(() => {
     dispatch(loadPopularArticles());
-  }, [dispatch]);
+  }, []);
 
   if (isLoading) {
     return <IsLoadingComponent />;

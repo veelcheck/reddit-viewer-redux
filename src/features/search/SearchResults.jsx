@@ -22,7 +22,7 @@ const SearchedArticles = () => {
 
   useEffect(() => {
     dispatch(loadSearchResults(searchTermUrl));
-  }, [dispatch]);
+  }, [searchTermUrl]);
 
   if (isLoading) {
     return <IsLoadingComponent />;
