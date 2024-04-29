@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-import timeAgo from '../../util/timeAgo';
+import getTimespamp from '../../util/timestamp';
 import UpIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import DownIcon from '@mui/icons-material/ThumbDownAltOutlined';
 import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
@@ -41,7 +41,7 @@ const SubredditComponent = () => {
       <>
         <article className='space-y-2 max-w-3xl mx-auto'>
           <div className='text-xs flex gap-4 font-quicksand text-gray-800'>
-            <div>{timeAgo(subredditData.created)}</div>
+            <div>{getTimespamp(subredditData.created)}</div>
             <div>{subredditData.author}</div>
           </div>
           <h2 className='font-bold text-xl'>{subredditData.title}</h2>

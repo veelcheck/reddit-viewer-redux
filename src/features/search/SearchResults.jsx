@@ -9,7 +9,7 @@ import { loadSearchResults } from './searchResultsSlice';
 import { setSubreddit } from '../subreddit/subredditSlice';
 import Button from '@mui/material/Button';
 import payloadForSubreddit from '../../util/payloadForSubreddit';
-import timeAgo from '../../util/timeAgo';
+import getTimespamp from '../../util/timestamp';
 
 const SearchedArticles = () => {
   const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const SearchedArticles = () => {
             </h2>
             <div className='flex flex-row gap-4 text-xs justify-center sm:justify-start'>
               <div className=''>{article.data.author}</div>
-              <div className=''>{timeAgo(article.data.created_utc)}</div>
+              <div className=''>{getTimespamp(article.data.created_utc)}</div>
             </div>
             <div className='line-clamp-2'>{article.data.selftext}</div>
             <div className='text-center sm:text-left'>

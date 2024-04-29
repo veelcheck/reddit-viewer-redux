@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
 
-import timeAgo from '../../util/timeAgo';
+import getTimespamp from '../../util/timestamp';
 import UpIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import DownIcon from '@mui/icons-material/ThumbDownAltOutlined';
 import PlusIcon from '@mui/icons-material/AddCircleOutline';
@@ -45,7 +45,7 @@ const CommentsComponent = ({ idUrl }) => {
           <li key={comment.data.id}>
             <div className='flex gap-4 text-xs text-gray-800 pb-2'>
               <div>{comment.data.author}</div>
-              <div>{timeAgo(comment.data.created)}</div>
+              <div>{getTimespamp(comment.data.created)}</div>
             </div>
             <div>{comment.data.body}</div>
             <div className='flex gap-4 justify-start pt-2'>
@@ -89,7 +89,7 @@ const CommentsComponent = ({ idUrl }) => {
                     key={reply.data.id}>
                     <div className='flex gap-4 text-xs text-gray-800 pb-2'>
                       <div>{reply.data.author}</div>
-                      <div>{timeAgo(reply.data.created)}</div>
+                      <div>{getTimespamp(reply.data.created)}</div>
                     </div>
                     <div className='border-l-8 pl-2'>{reply.data.body}</div>
                     <div className='flex gap-4 justify-start pt-2'>
