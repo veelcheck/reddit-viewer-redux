@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -6,8 +6,8 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import IsLoadingComponent from '../../components/Loading';
 import ErrorComponent from '../../components/Error';
 import { loadCategoryResults } from './categoriesSlice';
-import { setSubreddit } from '../subreddit/subredditSlice';
-import subredditPayload from '../../util/subredditPayload';
+import { actions } from '../subreddit/subredditSlice';
+import createSubredditPayload from '../../util/subredditPayload';
 import getTimespamp from '../../util/timestamp';
 import Button from '@mui/material/Button';
 import { useParams } from 'react-router-dom';
@@ -74,24 +74,11 @@ const CategoriesResults = () => {
               <Button
                 size='small'
                 onClick={() => {
+                  const payload = createSubredditPayload(article.data);
+                  const action = actions.updateSubreddit(payload);
+                  dispatch(action);
                   navigate(
                     `/subreddit/${encodeURIComponent(article.data.permalink)}`
-                  );
-                  dispatch(
-                    setSubreddit(
-                      subredditPayload(
-                        article.data.id,
-                        article.data.title,
-                        article.data.author,
-                        article.data.selftext,
-                        article.data.created,
-                        article.data.permalink,
-                        article.data.ups,
-                        article.data.downs,
-                        article.data.num_comments,
-                        article.data.url
-                      )
-                    )
                   );
                 }}
                 variant='outlined'>

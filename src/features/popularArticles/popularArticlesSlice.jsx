@@ -9,7 +9,7 @@ export const loadPopularArticles = createAsyncThunk(
         'https://www.reddit.com/r/home.json?limit=10'
       );
       const data = response.data.data.children;
-      console.log(data)
+      // console.log(data)
       return data;
     } catch (error) {
       console.log('Error fetching data:', error);

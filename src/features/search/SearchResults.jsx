@@ -7,9 +7,9 @@ import IsLoadingComponent from '../../components/Loading';
 import ErrorComponent from '../../components/Error';
 import NoResultsComponent from '../../components/NoResults';
 import { loadSearchResults } from './searchResultsSlice';
-import { setSubreddit } from '../subreddit/subredditSlice';
+import { actions } from '../subreddit/subredditSlice';
 import Button from '@mui/material/Button';
-import subredditPayload from '../../util/subredditPayload';
+import createSubredditPayload from '../../util/subredditPayload';
 import getTimespamp from '../../util/timestamp';
 
 const SearchedArticles = () => {
@@ -78,24 +78,11 @@ const SearchedArticles = () => {
               <Button
                 size='small'
                 onClick={() => {
+                  const payload = createSubredditPayload(article.data);
+                  const action = actions.updateSubreddit(payload);
+                  dispatch(action);
                   navigate(
                     `/subreddit/${encodeURIComponent(article.data.permalink)}`
-                  );
-                  dispatch(
-                    setSubreddit(
-                      subredditPayload(
-                        article.data.id,
-                        article.data.title,
-                        article.data.author,
-                        article.data.selftext,
-                        article.data.created,
-                        article.data.permalink,
-                        article.data.ups,
-                        article.data.downs,
-                        article.data.num_comments,
-                        article.data.url
-                      )
-                    )
                   );
                 }}
                 variant='outlined'>

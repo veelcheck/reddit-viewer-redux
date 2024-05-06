@@ -1,4 +1,4 @@
-const subredditPayload = (
+const createSubredditPayload = ({
   id,
   title,
   author,
@@ -8,8 +8,8 @@ const subredditPayload = (
   ups,
   downs,
   numComments,
-  url
-) => {
+  url,
+}) => {
   const payload = {
     id,
     title,
@@ -22,8 +22,7 @@ const subredditPayload = (
     numComments,
     url,
   };
-  console.log(payload);
   return payload;
 };
 
-export default subredditPayload;
+export default createSubredditPayload;

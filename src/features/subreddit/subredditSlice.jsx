@@ -48,8 +48,7 @@ export const subredditSlice = createSlice({
     hasError: false,
   },
   reducers: {
-    setSubreddit: (state, action) => {
-      console.log(action);
+    updateSubreddit: (state, action) => {
       state.subreddit = action.payload;
     },
   },
@@ -71,6 +70,9 @@ export const subredditSlice = createSlice({
   },
 });
 
-export const { setSubreddit } = subredditSlice.actions;
+export const { updateSubreddit } =  subredditSlice.actions;
+
+export const { actions } = subredditSlice;
+
 export const selectedSubreddit = (state) => state.subreddit.subreddit;
 export default subredditSlice.reducer;
